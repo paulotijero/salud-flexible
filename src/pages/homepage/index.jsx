@@ -2,7 +2,25 @@ import Header from '../../components/header';
 import Footer from '../../components/footer';
 import family from '../../assets/img/family.png';
 
+import { useAuth } from '../../contexts/auth-context';
+
 export default function Index() {
+  const { login } = useAuth();
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    const { dni, celular } = event.target.elements;
+
+    const credentials = {
+      user: {
+        dni: dni.value,
+        celular: celular.value,
+      },
+    };
+
+    login(credentials);
+  }
+
   return (
     <>
       <Header />
@@ -31,73 +49,80 @@ export default function Index() {
           asesoría, 100% online.
         </p>
 
-        <div className="flex flex-col gap-4 mb-4">
-          <div className="flex gap-2">
-            <div className="relative flex-1">
-              <select className="block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2">
-                <option>DNI</option>
-                {/* ... otras opciones ... */}
-              </select>
+        <form onSubmit={handleSubmit}>
+          <div className="flex flex-col gap-4 mb-4">
+            <div className="flex gap-2">
+              <div className="relative flex-1">
+                <select className="block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2">
+                  <option>DNI</option>
+                  {/* ... otras opciones ... */}
+                </select>
+              </div>
+              <div className="relative border-2 border-gray-400 rounded-lg shadow-sm">
+                <input
+                  type="number"
+                  id="dni"
+                  name="dni"
+                  placeholder=" "
+                  className="block p-4 pl-4 pt-6 pb-1 w-full text-md font-semibold text-gray-800 bg-transparent rounded-lg appearance-none"
+                />
+                <label
+                  htmlFor="dni"
+                  className="absolute left-4 top-1 text-sm font-normal text-gray-400 transition-all pointer-events-none"
+                >
+                  Nro. de documento
+                </label>
+              </div>
             </div>
+
             <div className="relative border-2 border-gray-400 rounded-lg shadow-sm">
               <input
                 type="number"
-                id="dni"
+                id="celular"
+                name="celular"
                 placeholder=" "
                 className="block p-4 pl-4 pt-6 pb-1 w-full text-md font-semibold text-gray-800 bg-transparent rounded-lg appearance-none"
               />
               <label
-                htmlFor="dni"
+                htmlFor="celular"
                 className="absolute left-4 top-1 text-sm font-normal text-gray-400 transition-all pointer-events-none"
               >
-                Nro. de documento
+                Celular
+              </label>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <label className="flex items-center font-semibold">
+                <input
+                  type="checkbox"
+                  className="form-checkbox text-blue-500 rounded"
+                />
+                <span className="ml-2">Acepto la Política de Privacidad</span>
+              </label>
+              <label className="flex items-center font-semibold">
+                <input
+                  type="checkbox"
+                  className="form-checkbox text-blue-500 rounded"
+                />
+                <span className="ml-2">
+                  Acepto la Política Comunicaciones Comerciales
+                </span>
               </label>
             </div>
           </div>
 
-          <div className="relative border-2 border-gray-400 rounded-lg shadow-sm">
-            <input
-              type="number"
-              id="celular"
-              placeholder=" "
-              className="block p-4 pl-4 pt-6 pb-1 w-full text-md font-semibold text-gray-800 bg-transparent rounded-lg appearance-none"
-            />
-            <label
-              htmlFor="celular"
-              className="absolute left-4 top-1 text-sm font-normal text-gray-400 transition-all pointer-events-none"
-            >
-              Celular
-            </label>
+          {/* Terms and Conditions */}
+          <div className="text-sm underline font-bold text-gray-600">
+            Aplican Términos y Condiciones.
           </div>
 
-          <div className="flex flex-col gap-2">
-            <label className="flex items-center font-semibold">
-              <input
-                type="checkbox"
-                className="form-checkbox text-blue-500 rounded"
-              />
-              <span className="ml-2">Acepto la Política de Privacidad</span>
-            </label>
-            <label className="flex items-center font-semibold">
-              <input
-                type="checkbox"
-                className="form-checkbox text-blue-500 rounded"
-              />
-              <span className="ml-2">
-                Acepto la Política Comunicaciones Comerciales
-              </span>
-            </label>
-          </div>
-        </div>
-
-        {/* Terms and Conditions */}
-        <div className="text-sm underline font-bold text-gray-600">
-          Aplican Términos y Condiciones.
-        </div>
-
-        <button className="w-full bg-gray-800 text-white font-bold text-xl py-4 rounded-full hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50">
-          Cotiza aquí
-        </button>
+          <button
+            type="submit"
+            className="w-full bg-gray-800 text-white font-bold text-xl py-4 rounded-full hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50"
+          >
+            Cotiza aquí
+          </button>
+        </form>
       </div>
 
       <Footer />
