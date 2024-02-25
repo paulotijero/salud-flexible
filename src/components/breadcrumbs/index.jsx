@@ -1,9 +1,13 @@
+import { useLocation } from 'react-router';
+
 const steps = [
-  { name: 'Planes y coberturas', current: true },
-  { name: 'Resumen', current: false },
+  { name: 'Planes y coberturas', path: '/plans' },
+  { name: 'Resumen', path: '/summary' },
 ];
 
-const Breadcrumbs = () => {
+function Breadcrumbs() {
+  const location = useLocation();
+
   return (
     <nav className="flex items-center justify-between" aria-label="Breadcrumb">
       <ol className="flex items-center space-x-4">
@@ -11,7 +15,7 @@ const Breadcrumbs = () => {
           <li key={step.name}>
             <div className="flex items-center">
               <span
-                className={`flex items-center text-sm font-medium ${step.current ? 'text-blue-600' : 'text-gray-500'}`}
+                className={`flex items-center text-sm font-medium ${step.path == location.pathname ? 'text-blue-600' : 'text-gray-500'}`}
               >
                 <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center border-2 border-blue-600 rounded-full">
                   {stepIdx + 1}
@@ -40,6 +44,6 @@ const Breadcrumbs = () => {
       </ol>
     </nav>
   );
-};
+}
 
 export default Breadcrumbs;
