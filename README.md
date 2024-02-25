@@ -22,6 +22,9 @@ yarn dev
 
 ## Docs
 
+- [husky](https://github.com/typicode/husky) - Git hooks made easy 🐶 woof!
+- [commitlint](https://github.com/conventional-changelog/commitlint) - Lint commit messages
+
 ## License
 
 [MIT](LICENSE)
