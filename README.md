@@ -26,6 +26,7 @@ yarn dev
 - [commitlint](https://github.com/conventional-changelog/commitlint) - Lint commit messages
 - [lint-staged](https://github.com/lint-staged/lint-staged) - Run linters on git staged files
 - [prettier](https://github.com/prettier/prettier) - An opinionated code formatter.
+- [tailwind](https://tailwindcss.com/docs/guides/vite) - For the styles
 
 ## License
 
