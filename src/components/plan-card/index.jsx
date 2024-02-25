@@ -1,6 +1,9 @@
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 
-const PlanCard = ({ name, price, description, recommended, originalCost }) => {
+function PlanCard({ name, price, description, recommended, originalCost }) {
+  const navigate = useNavigate();
+
   const badge = recommended ? (
     <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blue-600 bg-blue-200 last:mr-0 mr-1">
       Plan recomendado
@@ -24,6 +27,7 @@ const PlanCard = ({ name, price, description, recommended, originalCost }) => {
           ))}
         </div>
         <button
+          onClick={() => navigate('/summary')}
           type="button"
           className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
         >
@@ -32,7 +36,7 @@ const PlanCard = ({ name, price, description, recommended, originalCost }) => {
       </div>
     </div>
   );
-};
+}
 
 PlanCard.propTypes = {
   name: PropTypes.string,
