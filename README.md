@@ -28,6 +28,7 @@ yarn dev
 - [prettier](https://github.com/prettier/prettier) - An opinionated code formatter.
 - [tailwind](https://tailwindcss.com/docs/guides/vite) - For the styles
 - [@heroicons/react](https://github.com/tailwindlabs/heroicons) - SVG icons for UI development.
+- [react-router-dom](https://reactrouter.com/en/main/start/overview) - React Router
 
 ## License
 
