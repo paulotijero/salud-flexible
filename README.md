@@ -29,6 +29,7 @@ yarn dev
 - [tailwind](https://tailwindcss.com/docs/guides/vite) - For the styles
 - [@heroicons/react](https://github.com/tailwindlabs/heroicons) - SVG icons for UI development.
 - [react-router-dom](https://reactrouter.com/en/main/start/overview) - React Router
+- [PropTypes](https://www.npmjs.com/package/prop-types) - Runtime type checking for React props and similar objects.
 
 ## License
 
